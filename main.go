@@ -22,10 +22,8 @@ func (s *studentMgr) ShowStudent() {
 	for _, v := range s.students {
 		fmt.Println(v.Name, "成绩:", v.Grade)
 	}
-
 }
 func (s *studentMgr) AddStudent() {
-
 	var stu string
 	fmt.Printf("请输入学生姓名：")
 	fmt.Scanln(&stu)
@@ -41,9 +39,7 @@ func (s *studentMgr) AddStudent() {
 		return
 	}
 }
-
 func (s *studentMgr) EditStudentName() {
-
 	var name_ago, name_now string
 	fmt.Printf("请输入学生以前的姓名：")
 	fmt.Scanln(&name_ago)
@@ -62,9 +58,7 @@ func (s *studentMgr) EditStudentName() {
 		fmt.Println("此人不存在")
 	}
 }
-
 func (s *studentMgr) EditStudentGrade() {
-
 	var (
 		name      string
 		grade_now int
@@ -84,9 +78,7 @@ func (s *studentMgr) EditStudentGrade() {
 		fmt.Println("此人不存在")
 	}
 }
-
 func (s *studentMgr) DelStudent() {
-
 	var name string
 	fmt.Printf("请输入你不想要的学生的姓名:")
 	fmt.Scanln(&name)
@@ -98,7 +90,6 @@ func (s *studentMgr) DelStudent() {
 		fmt.Println("此人不存在")
 	}
 }
-
 func ShowMenu() {
 	fmt.Println(`
 1.展示所有学生信息
@@ -111,7 +102,7 @@ func ShowMenu() {
 8.加载数据`)
 }
 func (s *studentMgr) SaveToFile(filename string) error {
-	data, err := json.MarshalIndent(s.students, "", "    ")
+	data, err := json.MarshalIndent(s.students, "", "    ")
 	if err != nil {
 		return err
 	}
@@ -124,6 +115,7 @@ func (s *studentMgr) LoadFromFile(filename string) error {
 	}
 	return json.Unmarshal(data, &s.students)
 }
+
 func main() {
 	var p *studentMgr = &studentMgr{
 		students: make(map[string]Student),
@@ -134,7 +126,6 @@ func main() {
 		var n int
 		fmt.Printf("请输入操作序号:")
 		fmt.Scanln(&n)
-
 		switch n {
 		case 1:
 			(*p).ShowStudent()
@@ -166,7 +157,6 @@ func main() {
 				goto Q
 			}
 		}
-
 	}
 L:
 }
