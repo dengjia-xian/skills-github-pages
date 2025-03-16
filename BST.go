@@ -98,7 +98,7 @@ func (root *Node) Delete(data int) bool {
 					root.right = nil
 					return true
 				} else {
-					k, _, p := root.right.FindMin()
+					k, _, p := root.right.FindMax()
 					root.right.data = k
 					p.right = nil
 					p = nil
@@ -122,7 +122,7 @@ func (root *Node) Delete(data int) bool {
 					root.left = nil
 					return true
 				} else {
-					k, _, p := root.left.FindMin()
+					k, _, p := root.left.FindMax()
 					root.left.data = k
 					p.left = nil
 					p = nil
